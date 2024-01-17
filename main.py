@@ -61,7 +61,6 @@ def process_delineation():
                     if current_heart_rate > max_heart_rate:
                         max_heart_rate = current_heart_rate
                         max_heart_rate_timedelta = timedelta(milliseconds=wave_onset)
-                    continue
                 last_qrs = False
 
     response = {
@@ -70,10 +69,10 @@ def process_delineation():
         'mean_heart_rate': sum(heart_rates) / len(heart_rates),
         'min_heart_rate': min_heart_rate,
         'min_heart_rate_time': record_datetime + min_heart_rate_timedelta if
-        record_datetime else "User must provide 'start_record' query param for date information",
+        record_datetime else "User must provide 'record_datetime' query param for date information",
         'max_heart_rate': max_heart_rate,
         'max_heart_rate_time': record_datetime + max_heart_rate_timedelta if
-        record_datetime else "User must provide 'start_record' query param for date information",
+        record_datetime else "User must provide 'record_datetime' query param for date information",
     }
 
     return response
